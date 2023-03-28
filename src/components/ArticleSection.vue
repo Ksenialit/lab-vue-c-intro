@@ -1,6 +1,6 @@
 <template>
     <section>
-        <img src="icon" alt="article icon">
+        <img :src="icon" alt="article icon">
         <h2>{{ title }}</h2>
         <p> {{ description }}</p>
     </section>
@@ -9,25 +9,18 @@
 <script>
 export default {
     name: "ArticleSections",
-    props: { 
-        data() {
-            return {
-                items: [
-                { image:'',
-                title: 'Performant',
-                text: 'Truly reactive, compiler-optimized rendering system that rarely requires manual optimization.'}, 
-                { image:'',
-                title: 'Approachable',
-                text: 'Builds on top of standard HTML, CSS and JavaScript with intuitive API and world-class documentation.'}, 
-                { image:'',
-                title: 'Versatile',
-                text: 'A rich, incrementally adoptable ecosystem that scales between a library and a full-featured framework.'}, 
-                ]
-            }
+    props: {
+        icon: {
+            type: String,
+        },
+        title: {
+            type: String,
+        },
+        description: {
+            type: String
         }
     }
 }
-
 
 </script>
 

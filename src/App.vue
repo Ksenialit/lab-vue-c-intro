@@ -2,24 +2,47 @@
   <NavBar />
   <main>
     <section class="mainSection">
-      <img src="" alt="vue logo">
+      <img src="./images/Vue_logo.png" alt="vue logo">
       <h1>Welcome to Vue.js</h1>
       <h3>Become a coding ninja with the fastest-growing JavaScript framework</h3>
-      <button><a>Awesome!</a></button>
+      <button href="#"><a>Awesome!</a></button>
     </section>
     <section class="mainArticle">
-      <ArticleSections>
-        
-      </ArticleSections>
+      <ArticleSections 
+      v-for="article in articles" 
+      :key="article.id" 
+      :icon="article.icon"
+      :title="article.title"
+      :description="article.description"
+      ></ArticleSections>
     </section>
   </main>
 </template>
 
 <script>
 import NavBar from './components/NavBar.vue'
-import ArticleSections from './components/Article.vue'
+import ArticleSections from './components/ArticleSection.vue'
 export default {
   name: 'App',
+  components: {
+    NavBar,
+    ArticleSections
+  },
+  data() {
+            return {
+                articles: [
+                { icon: '/images/USP-3.png',
+                title: 'Performant',
+                description: 'Truly reactive, compiler-optimized rendering system that rarely requires manual optimization.'}, 
+                { icon: '/images/USP-2.png',
+                title: 'Approachable',
+                description: 'Builds on top of standard HTML, CSS and JavaScript with intuitive API and world-class documentation.'}, 
+                { icon:'/images/USP-3.png',
+                title: 'Versatile',
+                description: 'A rich, incrementally adoptable ecosystem that scales between a library and a full-featured framework.'}, 
+                ]
+            }
+        }
 }
 
 </script>
@@ -53,7 +76,6 @@ img {
 }
 
 button {
-  position: absolute;
   width: 121px;
   height: 31px;
   margin-top: 22px;
@@ -68,22 +90,24 @@ button a{
   font-size: 14px;
   line-height: 20px;
   display: flex;
-  align-items: center;
+  justify-content: center;
   text-align: center;
   letter-spacing: -0.02em;
   color: #FFFFFF;
 }
 .mainSection {
   display: flex;
-  justify-content: center;
+  align-items: center;
   flex-direction: column;
 }
 
 .mainArticle {
   background-color: #39B983;
-  position: absolute;
-  width: 600px;
+  width: 100%;
   height: 312px;
-  margin-top: 65px
+  margin-top: 65px;
+  display: flex;
+  justify-content: space-between;
+  flex-direction: row;
 }
 </style>
